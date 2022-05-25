@@ -5,43 +5,28 @@ use PHPUnit\Framework\TestCase;
 use App\FizzBuzz;
 class FizzBuzzTest extends TestCase{
 
-    
-    public function testReturnFizzWhenTheNumberIsThree(): void{
+    public function usesCases(){
 
-	$fizzBuzz = new FizzBuzz();
-	$result = $fizzBuzz->sayANumber(3);
-
-	$this->assertEquals('Fizz',$result);
-
+	return [
+	    [3, "Fizz"],
+	    [5, "Buzz"],
+	    [15, "FizzBuzz"],
+	    [1, "1"],
+	];
     }
 
-    public function testReturnBuzzWhenTheNumberIsFive(): void{
+    /**
+     * @test
+     * @covers \FizzBuzz::sayANumber
+     *@dataProvider usesCases
+     **/
 
+    public function testFizzBuzz($numberToTest, $expectedResult): void
+    {
 	$fizzBuzz = new FizzBuzz();
-	$result = $fizzBuzz->sayANumber(5);
+	$result = $fizzBuzz->sayANumber($numberToTest);
 
-	$this->assertEquals('Buzz',$result);
-
-
-    }
-
-    public function testReturnFizzBuzzWhenTheNumberFifteen(): void{
-
-	$fizzBuzz = new FizzBuzz();
-	$result = $fizzBuzz->sayANumber(15);
-
-	$this->assertEquals('FizzBuzz',$result);
-
-
-    }
-    
-    public function testReturnTheNumberWhenTheNumberOne(): void{
-
-	$fizzBuzz = new FizzBuzz();
-	$result = $fizzBuzz->sayANumber(1);
-	
-
-	$this->assertEquals(1,$result);
+	$this->assertEquals($expectedResult, $result);
 
     }
 }
