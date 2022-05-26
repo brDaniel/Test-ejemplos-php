@@ -9,7 +9,7 @@ class helloWorldTest extends TestCase{
     
     /**
      *@test 
-     *@covers /helloWorld::sayHello
+     *@covers App\helloWorld::sayHello
      */
 
     public function testSayHello()

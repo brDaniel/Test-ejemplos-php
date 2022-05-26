@@ -17,7 +17,7 @@ class FizzBuzzTest extends TestCase{
 
     /**
      * @test
-     * @covers \FizzBuzz::sayANumber
+     * @covers App\FizzBuzz::sayANumber
      *@dataProvider usesCases
      **/
 
