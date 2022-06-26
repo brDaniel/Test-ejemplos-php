@@ -4,7 +4,7 @@ namespace App;
 class helloWorld
 {
 
-    function sayHello()
+    function sayHello(): String
     {
 
 	return "Hello, World!";

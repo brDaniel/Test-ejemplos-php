@@ -4,7 +4,7 @@ namespace App\Tests;
 use PHPUnit\Framework\TestCase;
 use App\Operations;
 
-class operationsTest extends TestCase
+class OperationsTest extends TestCase
 {
     private $op;
 

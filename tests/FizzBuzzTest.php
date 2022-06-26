@@ -3,9 +3,17 @@ namespace App\Tests;
 
 use PHPUnit\Framework\TestCase;
 use App\FizzBuzz;
+
 class FizzBuzzTest extends TestCase{
 
-    public function usesCases(){
+    private $fizzBuzz;
+
+    public function setUp():void
+    {
+	$this->fizzBuzz = new FizzBuzz();
+    }
+    
+    public function usesCases(): Array{
 
 	return [
 	    [3, "Fizz"],
@@ -18,16 +26,42 @@ class FizzBuzzTest extends TestCase{
     /**
      * @test
      * @covers App\FizzBuzz::sayANumber
-     *@dataProvider usesCases
+     * @dataProvider usesCases
      **/
 
     public function testFizzBuzz($numberToTest, $expectedResult): void
     {
-	$fizzBuzz = new FizzBuzz();
-	$result = $fizzBuzz->sayANumber($numberToTest);
+	$result = $this->fizzBuzz->sayANumber($numberToTest);
 
 	$this->assertEquals($expectedResult, $result);
 
     }
+
+    /**
+     * @test
+     * @covers App\FizzBuzz::giveMeTheCheck
+     * */
+    public function testCheckIsZeroIfNothingSayANumber(): void
+    {
+
+
+	$this->assertEquals(0,$this->fizzBuzz->giveMeTheCheck());
+    }
+     /**
+     * @test
+     * @covers App\FizzBuzz::giveMeTheCheck
+     * @covers App\FizzBuzz::sayANumber
+     * */
+
+    public function testTheCheckIncrementWhenSayANumber(): void
+    {
+
+	$this->fizzBuzz->sayANumber(1);
+	$this->fizzBuzz->sayANumber(3);
+
+	$this->assertEquals(2,$this->fizzBuzz->giveMeTheCheck());
+	
+    }
+
 }
 ?>
